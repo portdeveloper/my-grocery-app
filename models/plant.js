@@ -10,7 +10,10 @@ const plantSchema = new Schema({
   price: { type: Number, required: true },
   numberInStock: { type: Number, required: true },
   image: { type: String, required: false },
-  url: { type: String, required: false },
+});
+
+plantSchema.virtual("url").get(function () {
+  return `/plants/${this._id}`;
 });
 
 module.exports = mongoose.model("Plant", plantSchema);

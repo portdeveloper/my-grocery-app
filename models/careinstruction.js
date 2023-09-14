@@ -9,4 +9,8 @@ const careInstructionSchema = new Schema({
   temperature: { type: String, required: true },
 });
 
+careInstructionSchema.virtual("url").get(function () {
+  return `/plants/${this.plant}/care-instructions`;
+});
+
 module.exports = mongoose.model("CareInstruction", careInstructionSchema);
