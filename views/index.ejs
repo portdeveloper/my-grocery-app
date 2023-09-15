@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Plant Guide Home</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <section id="intro">
+      <h1>Welcome to Plant Guide</h1>
+      <p>Your Ultimate Source for Plant Information</p>
+    </section>
+
+    <section id="featured-plants">
+      <h2>Featured Plants</h2>
+      <% plants.slice(0, 2).forEach(plant => { %>
+      <article class="featured-plant">
+        <h3><a href="<%= plant.url %>"><%= plant.name %></a></h3>
+        <% if (plant.image) { %>
+        <img
+          src="<%= plant.image %>"
+          alt="<%= plant.name %>"
+          width="100"
+          class="featured-plant-image"
+        />
+        <% } else { %>
+        <p>No Image</p>
+        <% } %>
+        <p><%= plant.description.substring(0, 100) %>...</p>
+        <p class="plant-price">Price: $<%= plant.price.toFixed(2) %></p>
+      </article>
+      <% }) %>
+    </section>
+
+    <footer>
+      <a href="/plants">View All Plants</a>
+    </footer>
   </body>
 </html>
