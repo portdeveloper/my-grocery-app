@@ -7,4 +7,6 @@ router.get("/", plant_controller.index);
 
 router.get("/plants", plant_controller.plant_list);
 
+router.get("/plants/:id", plant_controller.plant_detail);
+
 module.exports = router;

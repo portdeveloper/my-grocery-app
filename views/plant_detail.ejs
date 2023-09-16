@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= plant.name %> Details</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <section id="plant-details">
+      <h1><%= plant.name %></h1>
+      <% if (plant.image) { %>
+      <img
+        src="<%= plant.image %>"
+        alt="<%= plant.name %>"
+        style="max-width: 300px"
+      />
+      <% } else { %>
+      <p>No image available</p>
+      <% } %>
+
+      <p><strong>Scientific Name:</strong> <%= plant.scientificName %></p>
+      <p><strong>Description:</strong> <%= plant.description %></p>
+      <p>
+        <strong>Category:</strong> <%= plant.category ? plant.category.name :
+        'N/A' %>
+      </p>
+      <p><strong>Price:</strong> $<%= plant.price.toFixed(2) %></p>
+      <p><strong>Number in Stock:</strong> <%= plant.numberInStock %></p>
+
+      <a href="/catalog/plants">Back to plant list</a>
+    </section>
+  </body>
+</html>
